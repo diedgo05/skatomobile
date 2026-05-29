@@ -20,7 +20,7 @@ import '../../features/auth/presentation/viewmodels/register_viewmodel.dart';
 import '../../features/tricks/data/datasources/catalog_remote_data_source.dart';
 import '../../features/tricks/data/datasources/trick_remote_data_source.dart';
 import '../../features/tricks/data/repositories/catalog_repository_impl.dart';
-import '../../features/tricks/data/repositories/trick_repository_impl.dart';
+import '../../features/tricks/data/repositories/repositories.dart';
 import '../../features/tricks/domain/repositories/catalog_repository.dart';
 import '../../features/tricks/domain/repositories/trick_repository.dart';
 import '../../features/tricks/domain/usecases/create_trick_usecase.dart';
