@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../viewmodels/register_viewmodel.dart';
+import '../providers/register_viewmodel.dart';
 import '../widgets/auth_text_field.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -17,7 +17,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final _emailCtrl = TextEditingController();
   final _passwordCtrl = TextEditingController();
 
-  /// El idLevelUser es OBLIGATORIO en la API y NO hay endpoint para listarlos.
+  /// Los ids vienen del seed: 1=Principiante, 2=Intermedio, 3=Avanzado, 4=Pro.
   int _selectedLevel = 1;
 
   @override
@@ -42,7 +42,7 @@ class _RegisterPageState extends State<RegisterPage> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Cuenta creada. ¡Inicia sesión!')),
       );
-      Navigator.of(context).pop(); // regresa a login
+      Navigator.of(context).pop();
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(vm.error ?? 'No se pudo registrar')),
@@ -52,6 +52,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
     final vm = context.watch<RegisterViewModel>();
 
     return Scaffold(
@@ -64,6 +66,13 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                Icon(Icons.person_add_alt_1,
+                    size: 64, color: colorScheme.primary),
+                const SizedBox(height: 8),
+                Text('Únete a Skato',
+                    textAlign: TextAlign.center,
+                    style: textTheme.titleLarge),
+                const SizedBox(height: 24),
                 AuthTextField(
                   controller: _usernameCtrl,
                   label: 'Nombre de usuario',

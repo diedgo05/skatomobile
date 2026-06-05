@@ -9,7 +9,7 @@ import '../../features/tricks/domain/usecases/get_catalogs_usecase.dart';
 import '../../features/tricks/domain/usecases/update_trick_usecase.dart';
 import '../../features/tricks/presentation/pages/trick_form_page.dart';
 import '../../features/tricks/presentation/pages/trick_list_page.dart';
-import '../../features/tricks/presentation/viewmodels/trick_form_viewmodel.dart';
+import '../../features/tricks/presentation/providers/trick_form_viewmodel.dart';
 
 /// Navegación 1.0 con rutas nombradas + onGenerateRoute.
 class AppRoutes {

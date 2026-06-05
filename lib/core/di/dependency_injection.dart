@@ -12,15 +12,15 @@ import '../../features/auth/domain/repositories/auth_repository.dart';
 import '../../features/auth/domain/usecases/get_current_user_usecase.dart';
 import '../../features/auth/domain/usecases/login_usecase.dart';
 import '../../features/auth/domain/usecases/register_usecase.dart';
-import '../../features/auth/presentation/viewmodels/auth_session_viewmodel.dart';
-import '../../features/auth/presentation/viewmodels/login_viewmodel.dart';
-import '../../features/auth/presentation/viewmodels/register_viewmodel.dart';
+import '../../features/auth/presentation/providers/auth_session_viewmodel.dart';
+import '../../features/auth/presentation/providers/login_viewmodel.dart';
+import '../../features/auth/presentation/providers/register_viewmodel.dart';
 
 // --- Tricks ---
 import '../../features/tricks/data/datasources/catalog_remote_data_source.dart';
 import '../../features/tricks/data/datasources/trick_remote_data_source.dart';
 import '../../features/tricks/data/repositories/catalog_repository_impl.dart';
-import '../../features/tricks/data/repositories/repositories.dart';
+import '../../features/tricks/data/repositories/trick_repository_impl.dart';
 import '../../features/tricks/domain/repositories/catalog_repository.dart';
 import '../../features/tricks/domain/repositories/trick_repository.dart';
 import '../../features/tricks/domain/usecases/create_trick_usecase.dart';
@@ -28,14 +28,14 @@ import '../../features/tricks/domain/usecases/delete_trick_usecase.dart';
 import '../../features/tricks/domain/usecases/get_catalogs_usecase.dart';
 import '../../features/tricks/domain/usecases/get_tricks_usecase.dart';
 import '../../features/tricks/domain/usecases/update_trick_usecase.dart';
-import '../../features/tricks/presentation/viewmodels/trick_list_viewmodel.dart';
+import '../../features/tricks/presentation/providers/trick_list_viewmodel.dart';
 
 /// Composition Root: instancia y cablea TODAS las dependencias a mano.
 ///
 /// Esto es la "inyección de dependencias manual" que pide la práctica.
 /// Cada capa recibe sus colaboradores por constructor; aquí los enchufamos
 /// en el orden correcto:
-///     core -> data sources -> repositorios -> casos de uso -> viewmodels
+///     core -> data sources -> repositorios -> casos de uso -> providers
 class DependencyInjection {
   static List<SingleChildWidget> providers() {
     // ---------- 1) Servicios base (singletons de toda la app) ----------

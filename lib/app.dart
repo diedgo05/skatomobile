@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'core/routing/app_routes.dart';
-import 'core/theme/theme.dart';
-import 'core/theme/util.dart';
+import './core/shared/theme/theme.dart';
+import './core/shared/theme/util.dart';
 
 class SkatoApp extends StatelessWidget {
   final String initialRoute;
@@ -10,17 +10,12 @@ class SkatoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // 1) Tipografía: "Aleo" para body/label, "Actor" para titulares.
     final textTheme = createTextTheme(context, "Aleo", "Actor");
-
-    // 2) Construye el tema de Material Theme Builder con esa tipografía.
     final materialTheme = MaterialTheme(textTheme);
 
     return MaterialApp(
       title: 'Skato',
       debugShowCheckedModeBanner: false,
-      // 3) Aplicamos light/dark y dejamos que el sistema elija.
-
       theme: _withComponentStyles(materialTheme.light()),
       darkTheme: _withComponentStyles(materialTheme.dark()),
       themeMode: ThemeMode.system,

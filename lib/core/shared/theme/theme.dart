@@ -1,6 +1,3 @@
-// Archivo generado por Material Theme Builder.
-// Solo se modificó la línea `scaffoldBackgroundColor` (ver nota al final del método theme()).
-
 import "package:flutter/material.dart";
 
 class MaterialTheme {
@@ -347,9 +344,6 @@ class MaterialTheme {
       bodyColor: colorScheme.onSurface,
       displayColor: colorScheme.onSurface,
     ),
-    // 👇 FIX: el generador puso `colorScheme.background`, que está deprecado
-    //    y removido en Flutter 3.22+. Lo reemplazamos por `surface` (es el
-    //    equivalente actual y es lo que el propio Material 3 usa de fondo).
     scaffoldBackgroundColor: colorScheme.surface,
     canvasColor: colorScheme.surface,
   );

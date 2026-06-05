@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/routing/app_routes.dart';
-import '../viewmodels/login_viewmodel.dart';
+import '../providers/login_viewmodel.dart';
 import '../widgets/auth_text_field.dart';
 
 class LoginPage extends StatefulWidget {
@@ -26,7 +26,6 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<void> _submit() async {
     if (!_formKey.currentState!.validate()) return;
-    // context.read: usamos el VM una vez, no nos suscribimos a cambios aquí.
     final vm = context.read<LoginViewModel>();
     final ok = await vm.submit(
       email: _emailCtrl.text.trim(),
@@ -44,9 +43,9 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    // context.watch: SÍ nos suscribimos -> cuando cambia loading se redibuja el botón.
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
     final vm = context.watch<LoginViewModel>();
-    final scheme = Theme.of(context).colorScheme;
 
     return Scaffold(
       body: SafeArea(
@@ -58,11 +57,16 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Icon(Icons.skateboarding, size: 72, color: scheme.primary),
+                  Icon(Icons.skateboarding, size: 72, color: colorScheme.primary),
                   const SizedBox(height: 8),
                   Text('Skato',
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.headlineMedium),
+                      style: textTheme.headlineMedium),
+                  const SizedBox(height: 8),
+                  Text('Inicia sesión para ver tus trucos',
+                      textAlign: TextAlign.center,
+                      style: textTheme.bodyMedium
+                          ?.copyWith(color: colorScheme.onSurfaceVariant)),
                   const SizedBox(height: 32),
                   AuthTextField(
                     controller: _emailCtrl,
